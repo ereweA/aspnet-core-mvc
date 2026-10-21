@@ -13,13 +13,25 @@ public class JokeClassController : Controller
         _context = context;
     }
 
-    // GET: JOKECLASSS
+    // GET: JokeClass
     public async Task<IActionResult> Index()    
     {
         return View(await _context.JokeClass.ToListAsync());
     }
 
-    // GET: JOKECLASSS/Details/5
+    // GET: JokeClass/ShowSearchForm
+    public async Task<IActionResult> ShowSearchForm()
+    {
+        return View();
+    }
+
+    // POST: JokeClass/ShowSearchResults
+    public async Task<IActionResult> ShowSearchResults(String SearchPhrase)
+    {
+        return View("Index", await _context.JokeClass.Where(j => j.JokeQuestion.Contains(SearchPhrase)).ToListAsync());
+    }
+
+    // GET: JokeClass/Details/5
     public async Task<IActionResult> Details(int? id)
     {
         if (id == null)

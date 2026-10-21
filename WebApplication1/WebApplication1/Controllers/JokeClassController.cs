@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WebApplication1.Models;
 using WebApplication1.Data;
+using Microsoft.AspNetCore.Authorization;
 
 public class JokeClassController : Controller
 {
@@ -49,15 +50,17 @@ public class JokeClassController : Controller
         return View(jokeclass);
     }
 
-    // GET: JOKECLASSS/Create
+    // GET: JokeClass/Create
+    [Authorize]
     public IActionResult Create()
     {
         return View();
     }
 
-    // POST: JOKECLASSS/Create
+    // POST: JokeClass/Create
     // To protect from overposting attacks, enable the specific properties you want to bind to.
     // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+    [Authorize]
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Create([Bind("Id,JokeQuestion,JokeAnswer")] JokeClass jokeclass)
@@ -71,7 +74,8 @@ public class JokeClassController : Controller
         return View(jokeclass);
     }
 
-    // GET: JOKECLASSS/Edit/5
+    // GET: JokeClass/Edit/5
+    [Authorize]
     public async Task<IActionResult> Edit(int? id)
     {
         if (id == null)
@@ -87,7 +91,7 @@ public class JokeClassController : Controller
         return View(jokeclass);
     }
 
-    // POST: JOKECLASSS/Edit/5
+    // POST: JokeClass/Edit/5
     // To protect from overposting attacks, enable the specific properties you want to bind to.
     // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
     [HttpPost]
@@ -122,7 +126,8 @@ public class JokeClassController : Controller
         return View(jokeclass);
     }
 
-    // GET: JOKECLASSS/Delete/5
+    // GET: JokeClass/Delete/5
+    [Authorize]
     public async Task<IActionResult> Delete(int? id)
     {
         if (id == null)
@@ -140,7 +145,8 @@ public class JokeClassController : Controller
         return View(jokeclass);
     }
 
-    // POST: JOKECLASSS/Delete/5
+    // POST: JokeClass/Delete/5
+    [Authorize]
     [HttpPost, ActionName("Delete")]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> DeleteConfirmed(int? id)

@@ -4,11 +4,11 @@ using Microsoft.EntityFrameworkCore;
 using WebApplication1.Models;
 using WebApplication1.Data;
 
-public class JokeController : Controller
+public class JokeClassController : Controller
 {
     private readonly ApplicationDbContext _context;
 
-    public JokeController(ApplicationDbContext context)
+    public JokeClassController(ApplicationDbContext context)
     {
         _context = context;
     }
